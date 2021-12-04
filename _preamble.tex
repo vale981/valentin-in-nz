@@ -1,0 +1,29 @@
+\documentclass[twoside, a5paper, fontsize=12pt, parskip=half, DIV=14,
+headings=onelinechapter, openany]{scrbook}
+\usepackage[ngerman]{babel}
+\usepackage{fontspec}
+\setmainfont{cmuno}[
+  Extension = .otf,
+  UprightFont = *rm,
+  BoldFont = *bx,
+  ItalicFont = *ti,
+  BoldItalicFont = *bi,
+  ]
+
+%\usepackage{showframe}
+
+\usepackage{hyperref}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\newcommand{\chapdate}[1]{\setchapterpreamble[ul]{\textit{#1}}}
+\addtokomafont{disposition}{\rmfamily}
+
+\title{Valentin in Neuseeland}
+\subtitle{Funkspr\"uche an die Heimat.}
+\author{Valentin Boettcher}
+\begin{document}
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+\tableofcontents
+\clearpage
