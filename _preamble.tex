@@ -1,5 +1,5 @@
 \documentclass[twoside, a5paper, fontsize=12pt, parskip=half, DIV=14,
-headings=onelinechapter, openany]{scrbook}
+headings=onelinechapter, openany, headings=optiontohead, numbers=noenddot]{scrbook}
 \usepackage[ngerman]{babel}
 \usepackage{fontspec}
 \setmainfont{cmuno}[
@@ -9,21 +9,54 @@ headings=onelinechapter, openany]{scrbook}
   ItalicFont = *ti,
   BoldItalicFont = *bi,
   ]
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage[rightcaption]{sidecap}
 
 %\usepackage{showframe}
-
+\usepackage{xcolor}
+\usepackage[font=itshape]{quoting}
 \usepackage{hyperref}
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\newcommand{\chapdate}[1]{\setchapterpreamble[ul]{\textit{#1}}}
+\newcommand{\chapdate}[1]{\setchapterpreamble[ul]{\hfill\textcolor{gray}{\textit{#1}}}}
+\newenvironment{remark}
+    {\begin{minipage}{\dimexpr\textwidth-3cm}
+        \begin{itshape}
+        \color{gray}
+    }
+    {
+      \end{itshape}
+    \end{minipage}
+    }
 \addtokomafont{disposition}{\rmfamily}
 
+% TOC Styles
+\KOMAoptions{toc=chapterentrydotfill}
+
+\DeclareTOCStyleEntry[dynnumwidth=true]{tocline}{part}
+\DeclareTOCStyleEntry[dynnumwidth=true, indent=2em]{tocline}{chapter}
+
+% \RedeclareSectionCommand[tocdynnumwidth]{chapter}
+% \RedeclareSectionCommand[tocdynnumwidth]{part}
+% \DeclareTOCStyleEntry[]{largetocline}{part}
+\RedeclareSectionCommand[%
+  tocpagenumberbox=\blankbox
+]{part}
+\newcommand\blankbox[1]{}% do nothing
+
+\addtokomafont{chapterentry}{\footnotesize}
+\addtokomafont{chapterentrydots}{\footnotesize}
+
+\graphicspath{ {../images/} }
+
 \title{Valentin in Neuseeland}
-\subtitle{Funkspr\"uche an die Heimat.}
+\subtitle{Funkspr\"uche an die Heimat}
 \author{Valentin Boettcher}
 \begin{document}
 \begin{titlepage}
 \maketitle
 \end{titlepage}
 \tableofcontents
-\clearpage
+\cleardoubleoddpage
