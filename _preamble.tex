@@ -1,14 +1,10 @@
-\documentclass[twoside, a5paper, fontsize=12pt, parskip=half, DIV=14,
-headings=onelinechapter, openany, headings=optiontohead, numbers=noenddot]{scrbook}
+\documentclass[twoside, a5paper, fontsize=11pt, parskip=half, DIV=calc,%
+headings=onelinechapter, openany, headings=optiontohead,%
+numbers=noenddot,footsepline=false]{scrbook}
+
 \usepackage[ngerman]{babel}
 \usepackage{fontspec}
-\setmainfont{cmuno}[
-  Extension = .otf,
-  UprightFont = *rm,
-  BoldFont = *bx,
-  ItalicFont = *ti,
-  BoldItalicFont = *bi,
-  ]
+\setmainfont{CMU Serif}
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{subcaption}
@@ -17,10 +13,14 @@ headings=onelinechapter, openany, headings=optiontohead, numbers=noenddot]{scrbo
 %\usepackage{showframe}
 \usepackage{xcolor}
 \usepackage[font=itshape]{quoting}
-\usepackage{hyperref}
+\usepackage[colorlinks=true,
+            linkcolor=black,
+            citecolor=black,
+            filecolor=black,
+            urlcolor=black]{hyperref}
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\newcommand{\chapdate}[1]{\setchapterpreamble[ul]{\hfill\textcolor{gray}{\textit{#1}}}}
+\newcommand{\chapdate}[1]{\setchapterpreamble[ul]{\hfill\textcolor{gray}{\texttt{\textit{#1}}}}}
 \newenvironment{remark}
     {\begin{minipage}{\dimexpr\textwidth-3cm}
         \begin{itshape}
@@ -30,7 +30,16 @@ headings=onelinechapter, openany, headings=optiontohead, numbers=noenddot]{scrbo
       \end{itshape}
     \end{minipage}
     }
-\addtokomafont{disposition}{\rmfamily}
+\addtokomafont{disposition}{\ttfamily}
+\addtokomafont{pageheadfoot}{\ttfamily}
+\addtokomafont{pagenumber}{\ttfamily}
+
+\usepackage{zref-abspage}% absolute page counter
+\newwrite\figpages
+\openout\figpages=\jobname.fpg
+
+\newcommand{\mycap}[1]{\caption*{\write\figpages{\number\value{abspage}}#1}}
+
 
 % TOC Styles
 \KOMAoptions{toc=chapterentrydotfill}
@@ -50,13 +59,16 @@ headings=onelinechapter, openany, headings=optiontohead, numbers=noenddot]{scrbo
 \addtokomafont{chapterentrydots}{\footnotesize}
 
 \graphicspath{ {../images/} }
+\usepackage{caption}
+\captionsetup[figure]{font={small}}
+% \captionsetup{belowskip=0pt}
+% \captionsetup{aboveskip=pt}
+\setlength{\floatsep}{0pt plus 8.0pt minus 0.0pt}
+\renewcommand{\floatpagefraction}{1}
 
 \title{Valentin in Neuseeland}
 \subtitle{Funkspr\"uche an die Heimat}
 \author{Valentin Boettcher}
 \begin{document}
-\begin{titlepage}
-\maketitle
-\end{titlepage}
 \tableofcontents
 \cleardoubleoddpage
