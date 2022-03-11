@@ -1,11 +1,14 @@
-\documentclass[twoside, a5paper, fontsize=10pt, parskip=half, DIV=calc,%
-headings=onelinechapter, openany, headings=optiontohead,%
-numbers=noenddot,footsepline=false,BCOR=10truemm]{scrbook}
+\documentclass[twoside, a5paper, fontsize=10pt, parskip=no, DIV=calc,%
+openany,%
+numbers=noenddot,footsepline=false,BCOR=10truemm,footinclude=false,headinclude=true]{scrbook}
 \usepackage[cam,width=158truemm,height=220truemm,center]{crop}
+\pagestyle{headings}
 
 \usepackage[ngerman]{babel}
 \usepackage{fontspec}
 \setmainfont{CMU Serif}
+
+\KOMAoptions{DIV=last}
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{subcaption}
@@ -71,5 +74,7 @@ numbers=noenddot,footsepline=false,BCOR=10truemm]{scrbook}
 \subtitle{Funkspr\"uche an die Heimat}
 \author{Valentin Boettcher}
 \begin{document}
+\frontmatter
+\maketitle
 \tableofcontents
 \cleardoubleoddpage
